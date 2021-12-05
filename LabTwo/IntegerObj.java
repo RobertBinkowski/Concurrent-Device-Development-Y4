@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.itc.mutexexample;
+package LabTwo;
 
 /**
  *
@@ -11,10 +11,12 @@ package com.itc.mutexexample;
  */
 class IntegerObj {
     int value;
+
     IntegerObj(int val) {
         this.value = val;
     }
-    int inc(){
+
+    int inc() {
         this.value++;
         return this.value;
     }
