@@ -1,28 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package LabTwo;
+/**
+*
+*       @author     : Robert Binkowksi - C00237917
+*       Date        : 13/1/22
+*       Topic       : Using AtomicIntiger to increment an intiger between threads
+*/
+package LabTwo.AtomicIntiger;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author joe
- */
 public class Main {
 
     // Maximum number of threads in thread pool
     static final int MAX_T = 4;
 
     public static void main(String[] args) {
-        IntegerObj total = new IntegerObj(0);
+        IntegerObj total = new IntegerObj(new AtomicInteger());
         // creates five tasks
         Runnable r1 = new Task("task 1", total);
         Runnable r2 = new Task("task 2", total);

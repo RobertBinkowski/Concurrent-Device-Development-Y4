@@ -1,16 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package LabTwo;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
+/**
+*
+*       @author      : Robert Binkowksi - C00237917
+*       Date        : 13/1/22
+*       Topic       : Locking threads with Mutex
+*/
+package LabTwo.Mutex;
 
 /**
  *
- * @author joe
+ * @author Robert Binkowski
  */
 public class Task implements Runnable {
     private String name;
@@ -22,17 +20,25 @@ public class Task implements Runnable {
     }
 
     public void run() {
+
         try {
+
             for (int i = 0; i <= 500; i++) {
+
                 total.inc();
+
                 if (i % 100 == 0) {
                     Thread.sleep(100);
+
                 }
 
             }
             System.out.println(name + " complete");
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
     }
+
 }
