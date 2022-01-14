@@ -6,9 +6,16 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch Main",
+            "name": "Launch demo",
             "request": "launch",
-            "mainClass": "LabTwo.Mutex.Main",
+            "mainClass": "LabFive.demo",
+            "projectName": "Concurrent-Device-Development-Y4_dce1eaa0"
+        },
+        {
+            "type": "java",
+            "name": "Launch demo",
+            "request": "launch",
+            "mainClass": "LabThree.demo",
             "projectName": "Concurrent-Device-Development-Y4_dce1eaa0"
         },
         {
@@ -16,7 +23,7 @@
             "name": "Launch External Terminal",
             "request": "launch",
             "console": "externalTerminal",
-            "mainClass": "LabTwo.Main",
+            "mainClass": "",
             "projectName": "Concurrent-Device-Development-Y4_dce1eaa0"
         }
     ]
