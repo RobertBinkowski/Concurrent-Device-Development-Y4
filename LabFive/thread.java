@@ -1,12 +1,5 @@
 package LabFive;
 
-/**
-*
-*       @author     : Robert Binkowksi - C00237917
-*       Date        : 13/1/22
-* 
-*/
-
 // java program to demonstrate 
 // use of semaphores Locks
 import java.util.concurrent.*;

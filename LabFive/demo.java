@@ -4,6 +4,11 @@ import java.util.concurrent.*;
 
 // Driver class
 public class demo {
+
+    /**
+     * @param args[]
+     * @throws InterruptedException
+     */
     public static void main(String args[]) throws InterruptedException {
         // creating a Semaphore object
         // with number of permits 1

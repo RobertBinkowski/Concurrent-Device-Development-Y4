@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Main",
+            "request": "launch",
+            "mainClass": "LabSix.Main",
+            "projectName": "Concurrent-Device-Development-Y4_dce1eaa0"
+        },
+        {
+            "type": "java",
+            "name": "Launch PC",
+            "request": "launch",
+            "mainClass": "LabSix.PC",
+            "projectName": "Concurrent-Device-Development-Y4_dce1eaa0"
+        },
+        {
+            "type": "java",
             "name": "Launch demo",
             "request": "launch",
             "mainClass": "LabFive.demo",
