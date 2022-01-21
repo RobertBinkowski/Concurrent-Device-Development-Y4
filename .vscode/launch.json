@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch GameOfLife",
+            "request": "launch",
+            "mainClass": "LabNine.GameOfLife",
+            "projectName": "Concurrent-Device-Development-Y4_dce1eaa0"
+        },
+        {
+            "type": "java",
             "name": "Launch Main",
             "request": "launch",
             "mainClass": "LabSeven.Main",
