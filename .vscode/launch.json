@@ -8,6 +8,20 @@
             "type": "java",
             "name": "Launch Main",
             "request": "launch",
+            "mainClass": "LabSeven.Main",
+            "projectName": "Concurrent-Device-Development-Y4_dce1eaa0"
+        },
+        {
+            "type": "java",
+            "name": "Launch main",
+            "request": "launch",
+            "mainClass": "LabSeven.main",
+            "projectName": "Concurrent-Device-Development-Y4_dce1eaa0"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main",
+            "request": "launch",
             "mainClass": "LabSix.Main",
             "projectName": "Concurrent-Device-Development-Y4_dce1eaa0"
         },
