@@ -10,5 +10,9 @@ TO DOS:
 Requirements:
 
 list of files:
+main.cpp
+Semaphore.cpp
+Semaphore.h
+signal.cpp
 
 Relevant Info:
