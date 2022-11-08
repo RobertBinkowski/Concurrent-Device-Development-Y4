@@ -1,4 +1,4 @@
-# Lab 4
+# Lab 1
 
 <b>Brief:</b> <i>
 
@@ -31,4 +31,6 @@
 
 8. <b>List of files and what they contain:</b>
 
+   - <b>main.cpp</b> - the main project class
+   - <b>semaphore.cpp</b> - manages the threads
    - <b>README</b> - Project Details
