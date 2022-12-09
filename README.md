@@ -1,4 +1,4 @@
-# Lab 3
+# Concurrent Device Development Y4 Labs
 
 <b>Brief:</b> <i>
 
@@ -24,11 +24,12 @@
 
    - <b>Linux</b> - Environment
    - <b>g++</b> - Compiler
-   - <b>emacs</b> - Editor
+   - <b>emacs/VScode</b> - Editor
    - <b>make</b> - For creating Makefile
    - <b>gdb</b> - Debugger
-   - <b>doxygen</b> - Code documentation (optional)
+   - <b>doxygen</b> - Code documentation
 
 8. <b>List of files and what they contain:</b>
 
    - <b>README</b> - Project Details
+   - <b>Exercise One - Six</b> - Exercises Assigned
