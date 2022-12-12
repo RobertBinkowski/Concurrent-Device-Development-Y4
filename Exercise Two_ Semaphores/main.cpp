@@ -1,9 +1,10 @@
-#include "Semaphore.h"
+// #include "Semaphore.h"
+#include "Semaphore.cpp"
 #include <iostream>
 #include <thread>
 #include <unistd.h>
 
-/*! \class Signal
+/*!   \class Signal
  *    \brief An Implementation of Threads Using Semaphores
  *
  *   Uses C++11 features such as mutex and condition variables to implement Semaphores in thread functions
@@ -37,9 +38,9 @@ int main(void)
   int taskOneDelay = 5;
   threadOne = std::thread(taskTwo, sem);
   threadTwo = std::thread(taskOne, sem, taskOneDelay);
-  std::cout << "Launched from the main\n";
+  std::cout << "Launched from the main\n\n";
   // Wait for the threads to finish
-  threadOne.join();
   threadTwo.join();
+  threadOne.join();
   return 0;
 }
