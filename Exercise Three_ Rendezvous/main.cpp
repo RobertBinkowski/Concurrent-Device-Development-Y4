@@ -10,9 +10,8 @@
    Uses C++11 features such as mutex and condition variables to implement an example of a rendezvous for threads
 
 */
-int threads = 2;
+// I create a barrier to threads
 pthread_barrier_t barrier;
-
 /*! displays a message that is split in to 2 sections to show how a rendezvous works*/
 void taskOne(std::shared_ptr<Semaphore> firstSem, std::shared_ptr<Semaphore> secondSem, int delay)
 {
@@ -34,7 +33,7 @@ void taskTwo(std::shared_ptr<Semaphore> firstSem, std::shared_ptr<Semaphore> sec
 
 int main(void)
 {
-  pthread_barrier_init(&barrier, NULL, threads);
+  pthread_barrier_init(&barrier, NULL, 2);
   std::thread threadOne, threadTwo;
   std::shared_ptr<Semaphore> sem1(new Semaphore);
   std::shared_ptr<Semaphore> sem2(new Semaphore);
@@ -49,34 +48,3 @@ int main(void)
   pthread_barrier_destroy(&barrier);
   return 0;
 }
-
-// void Rendezvous(int n)
-// {
-
-//   Semaphore mutex(1);
-//   Semaphore semOne(0);
-//   Semaphore semTwo(1);
-
-//   mutex.Wait();
-//   count++;
-//   mutex.Signal();
-
-//   if (count == n)
-//   {
-//     semTwo.Wait();
-//     semOne.Signal();
-//   }
-
-//   semOne.Wait();
-//   semOne.Signal();
-//   mutex.Wait();
-//   count--;
-//   mutex.Signal();
-//   if (count == 0)
-//   {
-//     semOne.Wait();
-//     semTwo.Signal();
-//   }
-//   semTwo.Wait();
-//   semTwo.Signal();
-// }
