@@ -4,22 +4,29 @@
 #include <vector>
 
 static const int num_threads = 100;
+Semaphore mutex(1);
 int sharedVariable = 0;
 
-/*! \fn updateTask
-    \brief An Implementation of Mutual Exclusion using Semaphores
+/*!
+ *    \fn updateTask
+ *    \brief An Implementation of Mutual Exclusion using Semaphores
+ *
+ *   Uses C++11 features such as mutex and condition variables to implement
+ *   an example of a rendezvous for threads
+ *
+ */
 
-   Uses C++11 features such as mutex and condition variables to implement an example of a rendezvous for threads
-
-*/
-/*! displays a message that is split in to 2 sections to show how a rendezvous works*/
+// displays a message that is split in to 2 sections to show how a rendezvous works
 void updateTask(std::shared_ptr<Semaphore> firstSem, int numUpdates)
 {
 
   for (int i = 0; i < numUpdates; i++)
   {
     // UPDATE SHARED VARIABLE HERE!
+    mutex.Wait();
+    std::cout << sharedVariable << std::endl;
     sharedVariable++;
+    mutex.Signal();
   }
 }
 
@@ -31,7 +38,7 @@ int main(void)
   int i = 0;
   for (std::thread &t : vt)
   {
-    t = std::thread(updateTask, aSemaphore, 1000);
+    t = std::thread(updateTask, aSemaphore, 10);
   }
   std::cout << "Launched from the main\n";
   /**< Join the threads with the main thread */
