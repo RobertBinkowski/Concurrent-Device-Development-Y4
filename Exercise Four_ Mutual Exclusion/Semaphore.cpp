@@ -1,10 +1,8 @@
 #include "Semaphore.h"
 /*! \class Semaphore
- *    \brief A Semaphore Implementation
- *
- *   Uses C++11 features such as mutex and condition variables to implement Semaphore
- *
- */
+    \brief A Semaphore Implementation
+   Uses C++11 features such as mutex and condition variables to implement Semaphore
+*/
 
 void Semaphore::Wait()
 {
