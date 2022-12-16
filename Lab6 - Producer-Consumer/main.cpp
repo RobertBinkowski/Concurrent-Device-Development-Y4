@@ -12,6 +12,9 @@ int sleepTime = 1;
 int noOfRepeats = 20;
 char letters[] = "abcdefghijklmnopqrstuvwxyz";
 
+int printProduce();
+void printReceive(char data);
+
 /**
  * @brief Consumer Data
  *
