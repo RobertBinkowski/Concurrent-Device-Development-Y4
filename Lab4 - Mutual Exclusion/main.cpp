@@ -1,4 +1,4 @@
-#include "Semaphore.h"
+#include "Semaphore.cpp"
 #include <iostream>
 #include <thread>
 #include <vector>
@@ -22,14 +22,18 @@ void updateTask(std::shared_ptr<Semaphore> firstSem, int numUpdates)
 
   for (int i = 0; i < numUpdates; i++)
   {
-    // UPDATE SHARED VARIABLE HERE!
     mutex.Wait();
     std::cout << sharedVariable << std::endl;
     sharedVariable++;
     mutex.Signal();
   }
 }
-
+/**
+ * @brief Main to count tp to 1000 and locking each
+ *        thread to display them in a sequential manner
+ *
+ * @return int
+ */
 int main(void)
 {
   std::vector<std::thread> vt(num_threads);
@@ -38,7 +42,7 @@ int main(void)
   int i = 0;
   for (std::thread &t : vt)
   {
-    t = std::thread(updateTask, aSemaphore, 10);
+    t = std::thread(updateTask, aSemaphore, 1000);
   }
   std::cout << "Launched from the main\n";
   /**< Join the threads with the main thread */

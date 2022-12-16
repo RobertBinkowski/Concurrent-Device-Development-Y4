@@ -30,7 +30,11 @@ void taskTwo(std::shared_ptr<Semaphore> firstSem, std::shared_ptr<Semaphore> sec
   pthread_barrier_wait(&barrier);
   std::cout << "Task Two has left " << std::endl;
 }
-
+/**
+ * @brief Task to lock two tasks and display them in a specific order
+ *
+ * @return int
+ */
 int main(void)
 {
   pthread_barrier_init(&barrier, NULL, 2);

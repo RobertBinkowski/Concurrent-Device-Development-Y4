@@ -11,7 +11,12 @@
  *
  */
 std::mutex mutex;
-// displays a message first
+/**
+ * @brief Task to print out 1st
+ *
+ * @param theSemaphore
+ * @param delay
+ */
 void taskOne(std::shared_ptr<Semaphore> theSemaphore, int delay)
 {
   mutex.lock();
@@ -23,7 +28,11 @@ void taskOne(std::shared_ptr<Semaphore> theSemaphore, int delay)
   mutex.unlock();
 }
 
-// displays a message second
+/**
+ * @brief Task To Print out last
+ *
+ * @param theSemaphore
+ */
 void taskTwo(std::shared_ptr<Semaphore> theSemaphore)
 {
   mutex.lock();
@@ -33,7 +42,11 @@ void taskTwo(std::shared_ptr<Semaphore> theSemaphore)
   std::cout << "second" << std::endl;
   mutex.unlock();
 }
-
+/**
+ * @brief Using Semaphores, the threads are locked to display them sequentially.
+ *
+ * @return int
+ */
 int main(void)
 {
   std::thread threadOne, threadTwo;
