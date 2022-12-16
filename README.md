@@ -18,7 +18,7 @@
 6. <b>How to install project:</b>
 
    - run <b>make</b> file in terminal
-   - run <b>./mutex_exe</b><br>
+   - run <b>./main</b><br>
 
 7. <b>List of any required Libraries, platform issues, etc.:</b>
 

@@ -1,57 +1,82 @@
-#include "Barrier.h"
-#include "Event.h"
+#include <cstdlib>
 #include <iostream>
+#include <mutex>
 #include <thread>
-#include <vector>
+#include <chrono>
+using namespace std;
 
+std::mutex mtx;
+bool ready = false;
+int printData = 0;
+int sleepTime = 1;
+int noOfRepeats = 20;
+char letters[] = "abcdefghijklmnopqrstuvwxyz";
 
-static const int num_threads = 100;
-const int size=20;
-
-
-/*! \fn producer
-    \brief Creates events and adds them to buffer
-*/
-
-void producer(std::shared_ptr<SafeBuffer<std::shared_ptr<Event>> theBuffer, int numLoops){
-
-  for(int i=0;i<numLoops;++i){
-    //Produce event and add to buffer
-    Event e= createEvent(i);
-    theBuffer.put(e);
+/**
+ * @brief Consumer Data
+ *
+ */
+void cons()
+{
+  for (int i = 0; i < noOfRepeats; i++)
+  {
+    while (!ready)
+    {
+      std::this_thread::sleep_for(std::chrono::seconds(sleepTime));
+    }
+    std::unique_lock<std::mutex> ul(mtx);
+    printReceive(printData);
+    ready = false;
   }
-  
-
 }
 
-/*! \fn consumer
-    \brief Takes events from buffer and consumes them
-*/
+/**
+ * @brief Producer produces data by calling the randomiser
+ *
+ */
+void prod()
+{
+  for (int i = 0; i < noOfRepeats; i++)
+  {
+    std::unique_lock<std::mutex> ul(mtx);
 
-void consumer(std::shared_ptr<SafeBuffer<std::shared_ptr Event>> theBuffer, int numLoops){
-
-  for(int i=0;i<numLoops;++i){
-    //Produce event and add to buffer
-    std::shared_ptr<Event> e= theBuffer->get();
-    e->consume();
+    printData = printProduce();
+    ready = true;
+    ul.unlock();
+    while (ready)
+    {
+      std::this_thread::sleep_for(std::chrono::seconds(sleepTime));
+    }
   }
-  
-
 }
 
-int main(void){
-
-  std::vector<std::thread> vt(num_threads);
-  std::shared_ptr<SafeBuffer<std::shared_ptr<Event>> aBuffer( new Buffer<shared_ptr Event>(size));
-  /**< Launch the threads  */
-  int i=0;
-  for(std::thread& t: vt){
-    t=std::thread(updateTask,aBarrier,10);
-  }
-  /**< Join the threads with the main thread */
-  for (auto& v :vt){
-      v.join();
-  }
-  std::cout << sharedVariable << std::endl;
+int main()
+{
+  std::thread t1(cons);
+  std::thread t2(prod);
+  t1.join();
+  t2.join();
   return 0;
+}
+
+/**
+ * @brief Create & Print random Data Entry
+ *
+ * @return int
+ */
+int printProduce()
+{
+  char randomLetter = letters[rand() % 26];
+  std::cout << "Data Produced: " << randomLetter << "\n";
+  return randomLetter;
+}
+
+/**
+ * @brief Print Specific Data
+ *
+ * @param data
+ */
+void printReceive(char data)
+{
+  std::cout << "Data Received: " << data << "\n";
 }
